@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname+"/public/main.html");
 });
  app.get("/session", async(req, res) => {
-  if (fs.existsSync(__dirname+'/auth_info_baileys')) {
+    if (fs.existsSync(__dirname+'/auth_info_baileys')) {
     fs.emptyDirSync(__dirname+'/auth_info_baileys');
     require('child_process').execSync('rm -rf auth_info_baileys')
         require('child_process').exec('rm -r qrlogo.png')
@@ -108,9 +108,7 @@ app.get("/", (req, res) => {
           const output = await axios.post('http://paste.c-net.org/',`${btoa(data)}`, {headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
           let c = output.data.split('/')[3]
            await session.sendMessage(session.user.id, {text: 'Asena;;;'+c});	
-          let cc = `*Thanks for choosing Secktor-Md.*\n*Above code is your SESSION-ID*.\n_You completed first step of making Secktor-bot_\n\nVisit secktorbot.me\n*1.Repo:* citel-x.herokuapp.com/repo\n*2.Koyeb:* citel-x.herokuapp.com/koyeb\n*3.Plugins:* citel-x.herokuapp.com/plugins\n*3.Heroku:* citel-x.herokuapp.com/heroku\nThanks`
-          await session.sendMessage(session.user.id, {text: cc});
-          } catch (e) {
+           } catch (e) {
             console.log(e)
            await fs.emptyDirSync(__dirname+'/auth_info_baileys');
           require('child_process').exec('rm -rf auth_info_baileys')
@@ -154,11 +152,7 @@ app.get("/", (req, res) => {
  await require('child_process').exec('rm -rf auth_info_baileys')
  process.send('reset');;
  });
-   if(_huh){
-     var img = Buffer.from(_huh, 'base64')
-   return res.end(img)
-   }
- });
+   
 
 app.get("/deployment", (req, res) => {
  res.sendFile(__dirname+"/public/index-button.html");
